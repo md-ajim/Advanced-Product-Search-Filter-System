@@ -1,73 +1,94 @@
-# 🛒 Product Filter & Search App
+# 🔍 Advanced Product Search & Filter System – Full-Stack Portfolio Project
 
-A full-stack e-commerce filtering system built to showcase high-performance, scalable design using **Django REST Framework** on the backend and **Next.js (App Router)** on the frontend. This project demonstrates a production-ready architecture with modern UI/UX, advanced filtering, and seamless user interaction.
+This is a full-stack portfolio project built with **Django REST Framework**, **MySQL**, **Django Unfold**, **Next.js App Router**, **Tailwind CSS**, and **Shadcn UI**. It showcases a robust and scalable **search and filtering system** for products using **django-filter**, dynamic query handling, and a modern, animated frontend.
 
----
-
-## 🚀 What This Project Does
-
-- **Dynamic Product Filtering:**  
-  Users can filter products by category, price range, and customer rating — all without page reloads.
-
-- **Live Search Functionality:**  
-  Real-time search lets users quickly find products by name, description, or attributes.
-
-- **Advanced Sorting Options:**  
-  Products can be sorted by price and creation date, giving users control over how they browse the catalog.
-
-- **Collapsible & Responsive UI Components:**  
-  Built with Tailwind CSS and shadcn/ui for a beautiful, mobile-friendly user experience.
+> ⚡ This project demonstrates my skills as a **Full-Stack Developer**, capable of building optimized APIs, integrating advanced search filters, and designing interactive user interfaces with professional UI libraries.
 
 ---
 
-## 🧱 Tech Stack
+## ✨ Key Features
 
-| Layer        | Technology                         |
-|--------------|-------------------------------------|
-| **Frontend** | Next.js (App Router), Tailwind CSS, shadcn/ui |
-| **Backend**  | Django REST Framework, MySQL        |
-| **Filtering**| Django Filters (query-based), Search, Ordering |
-| **Admin UI** | Unfold – for a clean and modern Django admin panel |
+### 🔧 Backend (Django + DRF + MySQL)
 
----
+* **Product Filtering** using `django-filter` with custom filters:
 
-## 🔍 Backend Highlights
+  * Category filter
+  * Price range (min, max)
+  * Product rating
+* **Advanced Search** with `SearchFilter` and `OrderingFilter`
+* **Clean API design** with `ListAPIView`
+* **Admin UI customization** using [Django Unfold](https://github.com/unfoldadmin/unfold)
+* **MySQL** database for relational data and performance
 
-- Fully decoupled API architecture using Django REST Framework.
-- Flexible filter system using `django-filter` — designed to scale with any product catalog.
-- Optimized MySQL integration with efficient querying and clean data relationships.
-- REST endpoints structured to work seamlessly with frontend dynamic queries.
+### 💻 Frontend (Next.js App Router + Tailwind CSS + Shadcn UI)
 
----
-
-## 🎨 Frontend Highlights
-
-- Interactive filters using sliders, checkboxes, and star ratings — users can adjust filters and see instant results.
-- Clean, modern UI using **shadcn/ui components**, styled with **Tailwind CSS**.
-- Dynamic category and rating selectors with smooth transitions and hover states.
-- Optimized for mobile and desktop, with a collapsible sidebar-style filter menu.
+* Fully dynamic frontend using **Next.js App Router**
+* **Interactive UI** with **Shadcn UI** components
+* Responsive filtering UI for category, price range, and rating
+* Live search functionality with debounce
+* Mobile-first design with **Tailwind CSS**
+* API consumption from DRF with real-time filter response
 
 ---
 
-## 🧠 Why This Project Stands Out
+🚀 How to Run
 
-✅ Designed with recruiter and product owner expectations in mind  
-✅ Focuses on **real-world use cases** like product discovery and dynamic content updates  
-✅ Built with industry-standard tools used in professional production apps  
-✅ Clean separation of concerns — backend logic, filtering, and UI are all modular and scalable  
-✅ Responsive, accessible, and built to convert users
+🛠 Backend Setup
+
+```bash
+git clone https://github.com/your-username/your-repo-name.git
+cd your-backend-directory
+python -m venv venv
+source venv/bin/activate  # or venv\Scripts\activate on Windows
+pip install -r requirements.txt
+python manage.py makemigrations
+python manage.py migrate
+python manage.py runserver
+```
+
+🌐 Frontend Setup
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
 
 ---
 
-## 🙋 About Me
+🧠 Why This Project Matters
+This project reflects:
 
-Hi! I’m a **full-stack developer** who loves building real-world applications with clean architecture, reusable components, and user-first design. This project demonstrates my ability to connect frontend interactivity with backend data systems in a way that feels seamless, fast, and modern.
+📊 Real-world eCommerce use case
 
-If you’re looking for someone who can **build from scratch**, **scale with clarity**, and **ship polished results** — let’s connect.
+🎯 Precision filtering logic handled at backend level
+
+🧹 Decoupled architecture with DRF + Next.js
+
+🎨 Modern UI design using industry-standard Shadcn UI and Tailwind CSS
+
+🔄 Live search, filtering, and sorting powered by clean REST API
 
 ---
 
-## 📎 License
+👨‍💻 About Me
+I’m a results-driven Full-Stack Developer passionate about building high-performance, scalable, and user-centric web applications. I specialize in:
+
+🔗 Next.js, Tailwind, Shadcn UI
+
+🛠 Django REST Framework, MySQL, JWT
+
+🔐 Auth systems (JWT, OAuth, OTP)
+
+💼 Building complete SaaS & eCommerce solutions
+
+📨 Let’s connect and build something great: LinkedIn | Email
+
+---
+
+🪪 License
+This project is open-source under the MIT License.
+
 
 MIT — free to use for reference and learning.
 
