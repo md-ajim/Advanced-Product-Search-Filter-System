@@ -17,7 +17,7 @@ This is a full-stack portfolio project built with **Django REST Framework**, **M
   * Product rating
 * **Advanced Search** with `SearchFilter` and `OrderingFilter`
 * **Clean API design** with `ListAPIView`
-* **Admin UI customization** using [Django Unfold](https://github.com/unfoldadmin/unfold)
+* **Admin UI customization** using [Django Unfold](https://github.com/md-ajim/django-admin-custom)
 * **MySQL** database for relational data and performance
 
 ### 💻 Frontend (Next.js App Router + Tailwind CSS + Shadcn UI)
