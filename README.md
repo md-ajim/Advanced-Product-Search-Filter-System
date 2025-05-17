@@ -36,8 +36,8 @@ This is a full-stack portfolio project built with **Django REST Framework**, **M
 🛠 Backend Setup
 
 ```bash
-git clone https://github.com/your-username/your-repo-name.git
-cd your-backend-directory
+git clone https://github.com/md-ajim/Advanced-Product-Search-Filter-System.git
+cd backend
 python -m venv venv
 source venv/bin/activate  # or venv\Scripts\activate on Windows
 pip install -r requirements.txt
