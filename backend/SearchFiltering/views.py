@@ -18,7 +18,6 @@ class ProductListView(generics.ListAPIView):
         filters.OrderingFilter,
         
         ]
-    # filterset_fields = ['category__name']
     filterset_class  =  ProductFilter
     search_fields = ['name', 'description' , 'price' , 'color']
     ordering_fields = [ 'price', 'created_at']

@@ -12,9 +12,12 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
 
 
 # Quick-start development settings - unsuitable for production
@@ -49,8 +52,9 @@ INSTALLED_APPS = [
 
 REST_FRAMEWORK ={
     'DEFAULT_FILTER_BACKENDS':['django_filters.rest_framework.DjangoFilterBackend'],
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE' : 10
+    # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'DEFAULT_PAGINATION_CLASS': 'SearchFiltering.pagination.CustomPageNumberPagination',  # change this line
+    'PAGE_SIZE' : 8
 }
 
 MIDDLEWARE = [
@@ -97,10 +101,10 @@ WSGI_APPLICATION = 'core.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'db',
+        'NAME': os.environ.get('db_name'),
         'HOST' : 'localhost',
-        'USER' : 'root',
-        'PASSWORD' : 'Admin01780344340@',
+        'USER' : os.environ.get('db_user'),
+        'PASSWORD' : os.environ.get('db_password'),
         'PORT' : 3306,
     }
 }

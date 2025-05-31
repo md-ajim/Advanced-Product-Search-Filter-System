@@ -15,9 +15,9 @@ const MIN_PRICE = 0;
 const MAX_PRICE = 10000;
 
 const CollapsibleFilters = ({
-  handleCategorieChinge,
-  setIscategorie,
-  iscategorie,
+ HandelCategoryChange,
+  setIsCategory,
+ is_category,
   value,
   setValue,
   FilterProductUpdate,
@@ -32,9 +32,9 @@ const CollapsibleFilters = ({
         FilterProductUpdate={FilterProductUpdate}
       />
       <CategoryFilter
-        handleCategorieChinge={handleCategorieChinge}
-        setIscategorie={setIscategorie}
-        iscategorie={iscategorie}
+        HandelCategoryChange={ HandelCategoryChange}
+           setIsCategory={    setIsCategory}
+       is_category={   is_category}
       />
       <RatingFilter setRating={setRating} rating={rating}         FilterProductUpdate={FilterProductUpdate}  />
     </div>
@@ -127,19 +127,19 @@ const categories = [
 ];
 
 const CategoryFilter = ({
-  handleCategorieChinge,
-  setIscategorie,
-  iscategorie,
+   HandelCategoryChange,
+     setIsCategory,
+ is_category,
 }) => {
   return (
     <CollapsibleFilter title="Category" icon={Tag}>
       {categories.map((category, index) => (
         <div
           key={index}
-          onClick={() => handleCategorieChinge(category)}
+          onClick={() =>  HandelCategoryChange(category)}
           className="mb-2 flex items-center space-x-3"
         >
-          <Checkbox id={category} checked={iscategorie === category} />
+          <Checkbox id={category} checked={ is_category === category} />
           <Label htmlFor={category}>{category}</Label>
         </div>
       ))}
