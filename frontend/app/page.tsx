@@ -18,7 +18,7 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const productsPerPage = 3;
+  const productsPerPage = 7;
   const [is_category, setIsCategory] = useState([]);
   const searchParams = useSearchParams();
   const search_query = searchParams.get("search");
