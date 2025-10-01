@@ -2,7 +2,7 @@
 
 This is a full-stack portfolio project built with **Django REST Framework**, **MySQL**, **Django Unfold**, **Next.js App Router**, **Tailwind CSS**, and **Shadcn UI**. It showcases a robust and scalable **search and filtering system** for products using **django-filter**, dynamic query handling, and a modern, animated frontend.
 
-> ⚡ This project demonstrates my skills as a **Full-Stack Developer**, capable of building optimized APIs, integrating advanced search filters, and designing interactive user interfaces with professional UI libraries.
+> ⚡ This project demonstrates my skills as a **Full-Stack Developer**, capable of building optimized APIs, integrating advanced search filters, **pagination**, and designing interactive user interfaces with professional UI libraries.
 
 ---
 
@@ -16,6 +16,10 @@ This is a full-stack portfolio project built with **Django REST Framework**, **M
   * Price range (min, max)
   * Product rating
 * **Advanced Search** with `SearchFilter` and `OrderingFilter`
+* **Pagination** with `PageNumberPagination`:
+
+  * Configurable page size (default: 8 products per page)
+  * Seamless integration with the frontend for dynamic page navigation
 * **Clean API design** with `ListAPIView`
 * **Admin UI customization** using [Django Unfold](https://github.com/md-ajim/django-admin-custom)
 * **MySQL** database for relational data and performance
@@ -25,9 +29,10 @@ This is a full-stack portfolio project built with **Django REST Framework**, **M
 * Fully dynamic frontend using **Next.js App Router**
 * **Interactive UI** with **Shadcn UI** components
 * Responsive filtering UI for category, price range, and rating
+* **Pagination controls** that fetch the correct page of products from the backend and update the UI accordingly
 * Live search functionality with debounce
 * Mobile-first design with **Tailwind CSS**
-* API consumption from DRF with real-time filter response
+* API consumption from DRF with real-time filter and pagination support
 
 ---
 
@@ -61,13 +66,13 @@ This project reflects:
 
 📊 Real-world eCommerce use case
 
-🎯 Precision filtering logic handled at backend level
+🎯 Precision filtering and pagination logic handled at backend level
 
 🧹 Decoupled architecture with DRF + Next.js
 
 🎨 Modern UI design using industry-standard Shadcn UI and Tailwind CSS
 
-🔄 Live search, filtering, and sorting powered by clean REST API
+🔄 Live search, filtering, sorting, and pagination powered by a clean REST API
 
 ---
 
@@ -89,7 +94,8 @@ I’m a results-driven Full-Stack Developer passionate about building high-perfo
 🪪 License
 This project is open-source under the MIT License.
 
-
 MIT — free to use for reference and learning.
+
+---
 
 
