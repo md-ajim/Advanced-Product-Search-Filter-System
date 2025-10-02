@@ -7,14 +7,15 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Product } from "@/types/product";
 import Image from "next/image";
-
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import axios from "axios";
-import {  useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import PaginationDemo from "@/components/pagination/pagination";
+
 const MIN_PRICE = 0;
 const MAX_PRICE = 1000000;
+
 export default function Home() {
   const [product, setProduct] = useState<Product[]>([]);
   const [loading, setLoading] = useState(false);
@@ -32,7 +33,6 @@ export default function Home() {
 
   const searchProductUpdate = async () => {
     setLoading(true);
-
     try {
       const response = axios.get(
         `http://127.0.0.1:8000/api/product/?search=${search_query}`
@@ -51,20 +51,16 @@ export default function Home() {
       setProduct([]);
     } finally {
       setLoading(false);
-      setLoading(false);
     }
   };
 
   const FilterProductUpdate = async () => {
     setLoading(true);
-
     const params = {
       category: is_category,
       min_price: searchParams.get("min_price") || value.from,
       max_price: searchParams.get("max_price") || value.to,
       rating: searchParams.get("rating") || rating,
-      // min_rating:searchParams.get('min_rating')|| '',
-      // max_rating :searchParams.get('max_rating')|| '',
     };
 
     try {
@@ -92,12 +88,10 @@ export default function Home() {
   useEffect(() => {
     const factProductData = async () => {
       setLoading(true);
-
       try {
         const response = axios.get(
           `http://127.0.0.1:8000/api/product/?page=${currentPage}&page_size=${productsPerPage}`
         );
-
         setTotalPages(Math.ceil((await response).data.count / productsPerPage));
         const data = (await response).data.results;
 
@@ -129,9 +123,10 @@ export default function Home() {
   };
 
   return (
-    <div className=" mt-4 bg-background   dark:border-slate-700/70 max-w-screen-xl mx-auto ">
-      <main className="  grid md:grid-cols-4 grid-cols-1  place-content-center  md:px-0 lg:px-0 px-2 mb-4   gap-4">
-        <div className=" flex   justify-center justify-items-center">
+    <div className="mt-4 bg-background dark:border-slate-700/70 w-full max-w-screen-2xl mx-auto px-2 sm:px-4 lg:px-6">
+      <main className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 mb-8">
+        {/* Filter Sidebar - Full width on mobile, fixed position on desktop */}
+        <div className="col-span-full lg:col-span-1 lg:sticky lg:top-4 lg:self-start">
           <CollapsibleFilters
             HandelCategoryChange={HandelCategoryChange}
             setIsCategory={setIsCategory}
@@ -144,108 +139,130 @@ export default function Home() {
           />
         </div>
 
-        {loading
-          ? Array(3)
-              .fill(0)
-              .map((_, kye) => <SkeletonCard key={kye} />)
-          : product.map((item, index) => (
-              <div
-                key={index}
-                className="border border-solid  md:p-0 pb-4 lg:p-0    flex flex-col border-gray-300 rounded-lg shadow-sm hover:shadow-md"
-              >
-                <Link href={`/product/`}>
-                  <figure className=" relative">
-                    <Image
-                      className="object-cover w-auto "
-                      src={`${item.image}`}
-                      layout="responsive"
-                      width={0}
-                      height={0}
-                      alt={"image"}
-                    />
-                    <Badge
-                      variant="secondary"
-                      className="absolute top-2 right-2 text-xs px-2 py-1 rounded-lg"
-                    >
-                      {item?.category?.name}
-                    </Badge>
-                  </figure>
-                </Link>
-                <div className="   border-t  px-4">
-                  <div className="">
-                    <div className="flex justify-between items-start">
-                      <div>
-                        <div className="flex items-center space-x-1 mt-1">
-                          <div className="flex">
-                            {[...Array(5)].map((_, i) => (
-                              <StarIcon
-                                key={i}
-                                className={`w-4 h-4 ${
-                                  i < Math.floor(2)
-                                    ? "text-yellow-500"
-                                    : "text-gray-300"
-                                }`}
-                              />
-                            ))}
-                          </div>
-                          <span className="text-sm text-gray-500">{5}</span>
-                        </div>
+        {/* Product Grid - Responsive columns */}
+        <div className="col-span-full lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6">
+          {loading
+            ? Array(6)
+                .fill(0)
+                .map((_, key) => <SkeletonCard key={key} />)
+            : product.map((item, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, delay: index * 0.1 }}
+                  className="border border-solid flex flex-col border-gray-300 dark:border-gray-700 rounded-lg shadow-sm hover:shadow-lg transition-shadow duration-300 bg-white dark:bg-gray-800 overflow-hidden"
+                >
+                  {/* Product Image */}
+                  <Link href={`/product/${item.id}`} className="block">
+                    <figure className="relative aspect-square w-full overflow-hidden bg-gray-100 dark:bg-gray-700">
+                      <Image
+                        className="object-cover hover:scale-105 transition-transform duration-300"
+                        src={item.image}
+                        fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        alt={item.title || item.name}
+                        priority={index < 3}
+                      />
+                      <Badge
+                        variant="secondary"
+                        className="absolute top-2 right-2 text-xs px-2 py-1 rounded-lg backdrop-blur-sm"
+                      >
+                        {item?.category?.name}
+                      </Badge>
+                    </figure>
+                  </Link>
+
+                  {/* Product Details */}
+                  <div className="border-t dark:border-gray-700 p-3 sm:p-4 flex flex-col flex-1">
+                    {/* Title */}
+                    <Link href={`/product/${item.id}`}>
+                      <h3 className="text-sm sm:text-base font-semibold mb-2 line-clamp-2 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                        {item.title || item.name}
+                      </h3>
+                    </Link>
+
+                    {/* Rating */}
+                    <div className="flex items-center gap-2 mb-2">
+                      <div className="flex">
+                        {[...Array(5)].map((_, i) => (
+                          <StarIcon
+                            key={i}
+                            className={`w-3 h-3 sm:w-4 sm:h-4 ${
+                              i < Math.floor(item.rating || 0)
+                                ? "text-yellow-500 fill-yellow-500"
+                                : "text-gray-300 dark:text-gray-600"
+                            }`}
+                          />
+                        ))}
                       </div>
+                      <span className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">
+                        ({item.rating || 0})
+                      </span>
                     </div>
 
-                    <div className="flex justify-between items-center">
-                      <p className="text-lg font-bold font-semibold">
-                        {item.price}
+                    {/* Price and Stock */}
+                    <div className="flex justify-between items-center mb-3">
+                      <p className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">
+                        ${parseFloat(item.price).toFixed(2)}
                       </p>
-                      <Badge className="bg-green-100 text-green-700 px-2 py-1 rounded-lg">
-                        In Stock
+                      <Badge className="bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300 text-xs px-2 py-1 rounded-lg">
+                        {item.is_active ? "In Stock" : "Out of Stock"}
                       </Badge>
                     </div>
-                  </div>
 
-                  <div className=" flex flex-col space-y-1">
-                    <div className="flex justify-between items-center">
-                      <input
-                        type="number"
-                        defaultValue={1}
-                        className="border rounded-lg p-1 md:w-24 text-center"
-                      />
-                      <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        <Button className="flex-1">
-                          <ShoppingCart className="w-4 h-4 mr-2" />
-                          Add to cart
-                        </Button>
-                      </motion.div>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <Button variant="outline" className="w-1/2">
-                        <HeartIcon className="mr-2 h-4 w-4" /> Wishlist
-                      </Button>
-
-                      <Button
-                        variant="link"
-                        className="w-1/2 text-sm text-black"
-                      >
-                        <Link
-                          className="flex items-center gap-1"
-                          href={`/product/`}
+                    {/* Actions */}
+                    <div className="flex flex-col gap-2 mt-auto">
+                      {/* Quantity and Add to Cart */}
+                      <div className="flex gap-2 items-center">
+                        <input
+                          type="number"
+                          defaultValue={1}
+                          min={1}
+                          className="border dark:border-gray-600 rounded-lg p-2 w-16 sm:w-20 text-center text-sm dark:bg-gray-700 dark:text-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                        />
+                        <Button 
+                          className="flex-1 text-xs sm:text-sm h-9 sm:h-10" 
+                          disabled={!item.is_active}
                         >
-                          <EyeIcon className="h-4 w-4 underline" />
-                          <span className=" dark:text-white">View Details</span>
-                        </Link>
-                      </Button>
+                          <ShoppingCart className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
+                          <span className="hidden sm:inline">Add to cart</span>
+                          <span className="sm:hidden">Add</span>
+                        </Button>
+                      </div>
+
+                      {/* Wishlist and View Details */}
+                      <div className="flex gap-2">
+                        <Button 
+                          variant="outline" 
+                          className="flex-1 text-xs sm:text-sm h-9 sm:h-10"
+                        >
+                          <HeartIcon className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
+                          <span className="hidden sm:inline">Wishlist</span>
+                          <span className="sm:hidden">Save</span>
+                        </Button>
+
+                        <Button
+                          variant="outline"
+                          className="flex-1 text-xs sm:text-sm h-9 sm:h-10"
+                          asChild
+                        >
+                          <Link href={`/product/${item.id}`}>
+                            <EyeIcon className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
+                            <span className="hidden sm:inline">View Details</span>
+                            <span className="sm:hidden">View</span>
+                          </Link>
+                        </Button>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            ))}
+                </motion.div>
+              ))}
+        </div>
       </main>
 
-      <div className=" flex justify-center items-center   w-full mx-auto  justify-items-center">
+      {/* Pagination */}
+      <div className="flex justify-center items-center w-full mx-auto pb-8">
         <PaginationDemo
           currentPage={currentPage}
           totalPages={totalPages}
@@ -258,15 +275,19 @@ export default function Home() {
 
 function SkeletonCard() {
   return (
-    <div className="border md:h-[400px] lg:h-[400px] w-full h-auto flex flex-col border-gray-300 rounded-lg shadow-sm">
-      <Skeleton className="h-[200px] w-full rounded-t-lg" />
-      <div className="p-2 space-y-2">
-        <Skeleton className="h-5 w-3/4" />
-        <Skeleton className="h-4 w-1/2" />
-        <Skeleton className="h-6 w-1/4" />
-        <div className="flex space-x-2">
-          <Skeleton className="h-10 w-1/2 rounded-md" />
-          <Skeleton className="h-10 w-1/2 rounded-md" />
+    <div className="border border-gray-300 dark:border-gray-700 flex flex-col rounded-lg shadow-sm overflow-hidden bg-white dark:bg-gray-800">
+      <Skeleton className="aspect-square w-full" />
+      <div className="p-3 sm:p-4 space-y-3">
+        <Skeleton className="h-4 sm:h-5 w-3/4" />
+        <Skeleton className="h-3 sm:h-4 w-1/2" />
+        <Skeleton className="h-5 sm:h-6 w-1/4" />
+        <div className="flex gap-2">
+          <Skeleton className="h-9 sm:h-10 w-16 sm:w-20 rounded-md" />
+          <Skeleton className="h-9 sm:h-10 flex-1 rounded-md" />
+        </div>
+        <div className="flex gap-2">
+          <Skeleton className="h-9 sm:h-10 w-1/2 rounded-md" />
+          <Skeleton className="h-9 sm:h-10 w-1/2 rounded-md" />
         </div>
       </div>
     </div>

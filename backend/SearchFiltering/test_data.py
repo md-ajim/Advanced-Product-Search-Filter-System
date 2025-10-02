@@ -3,6 +3,7 @@ from decimal import Decimal
 from django.utils import timezone
 import requests
 from io import BytesIO
+from PIL import Image
 
 # Test data for Categories
 categories_data = [
@@ -32,329 +33,398 @@ categories_data = [
     }
 ]
 
-# Test data for Products with real image URLs
+# NEW Test data for Products with real image URLs
 products_data = [
-    # Clothes
+    # Clothes - NEW PRODUCTS
     {
-        "name": "Cotton T-Shirt",
-        "title": "Classic Cotton Tee",
+        "name": "Hooded Sweatshirt",
+        "title": "Urban Hoodie",
         "category_name": "CLOTHES",
-        "description": "Comfortable 100% cotton t-shirt perfect for everyday wear",
-        "price": Decimal("19.99"),
-        "size": "M",
-        "color": "Blue",
-        "is_active": True,
-        "image_url": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800&q=80"
-    },
-    {
-        "name": "Denim Jeans",
-        "title": "Slim Fit Jeans",
-        "category_name": "CLOTHES",
-        "description": "Modern slim fit denim jeans with stretch fabric",
-        "price": Decimal("49.99"),
-        "size": "32",
-        "color": "Dark Blue",
-        "is_active": True,
-        "image_url": "https://images.unsplash.com/photo-1542272604-787c3835535d?w=800&q=80"
-    },
-    {
-        "name": "Summer Dress",
-        "title": "Floral Maxi Dress",
-        "category_name": "CLOTHES",
-        "description": "Lightweight floral print maxi dress for summer",
-        "price": Decimal("39.99"),
+        "description": "Premium cotton blend hoodie with front pocket and adjustable drawstring",
+        "price": Decimal("45.99"),
         "size": "L",
-        "color": "Multi",
-        "is_active": True,
-        "image_url": "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=800&q=80"
-    },
-    {
-        "name": "Leather Jacket",
-        "title": "Biker Jacket",
-        "category_name": "CLOTHES",
-        "description": "Genuine leather jacket with zipper details",
-        "price": Decimal("129.99"),
-        "size": "L",
-        "color": "Black",
-        "is_active": True,
-        "image_url": "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=800&q=80"
-    },
-    {
-        "name": "Sneakers",
-        "title": "White Sneakers",
-        "category_name": "CLOTHES",
-        "description": "Classic white sneakers for casual wear",
-        "price": Decimal("59.99"),
-        "size": "9",
-        "color": "White",
-        "is_active": True,
-        "image_url": "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=800&q=80"
-    },
-    
-    # Home Interiors
-    {
-        "name": "Table Lamp",
-        "title": "Modern LED Lamp",
-        "category_name": "HOME",
-        "description": "Energy-efficient LED table lamp with adjustable brightness",
-        "price": Decimal("29.99"),
-        "size": None,
-        "color": "White",
-        "is_active": True,
-        "image_url": "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=800&q=80"
-    },
-    {
-        "name": "Throw Pillow",
-        "title": "Velvet Cushion",
-        "category_name": "HOME",
-        "description": "Soft velvet throw pillow with removable cover",
-        "price": Decimal("15.99"),
-        "size": "18x18",
         "color": "Gray",
         "is_active": True,
-        "image_url": "https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?w=800&q=80"
+        "image_url": "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=800&q=80"
     },
     {
-        "name": "Wall Art",
-        "title": "Abstract Canvas",
-        "category_name": "HOME",
-        "description": "Contemporary abstract art canvas print",
-        "price": Decimal("79.99"),
-        "size": "24x36",
-        "color": "Multi",
+        "name": "Chino Pants",
+        "title": "Slim Chinos",
+        "category_name": "CLOTHES",
+        "description": "Versatile slim-fit chino pants perfect for casual or semi-formal wear",
+        "price": Decimal("54.99"),
+        "size": "32",
+        "color": "Khaki",
         "is_active": True,
-        "image_url": "https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?w=800&q=80"
+        "image_url": "https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=800&q=80"
     },
     {
-        "name": "Coffee Table",
-        "title": "Modern Oak Table",
-        "category_name": "HOME",
-        "description": "Solid oak coffee table with minimalist design",
-        "price": Decimal("149.99"),
-        "size": "48x24",
-        "color": "Natural",
+        "name": "Winter Coat",
+        "title": "Wool Overcoat",
+        "category_name": "CLOTHES",
+        "description": "Classic wool blend overcoat with button closure and side pockets",
+        "price": Decimal("159.99"),
+        "size": "M",
+        "color": "Navy",
         "is_active": True,
-        "image_url": "https://images.unsplash.com/photo-1532372320572-cda25653a26d?w=800&q=80"
+        "image_url": "https://images.unsplash.com/photo-1539533113208-f6df8cc8b543?w=800&q=80"
     },
     {
-        "name": "Plant Pot",
-        "title": "Ceramic Planter",
-        "category_name": "HOME",
-        "description": "Handmade ceramic plant pot with drainage hole",
-        "price": Decimal("24.99"),
-        "size": "8 inch",
-        "color": "Terracotta",
+        "name": "Polo Shirt",
+        "title": "Classic Polo",
+        "category_name": "CLOTHES",
+        "description": "Cotton pique polo shirt with three-button placket",
+        "price": Decimal("29.99"),
+        "size": "M",
+        "color": "White",
         "is_active": True,
-        "image_url": "https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=800&q=80"
+        "image_url": "https://images.unsplash.com/photo-1586363104862-3a5e2ab60d99?w=800&q=80"
+    },
+    {
+        "name": "Canvas Backpack",
+        "title": "Travel Backpack",
+        "category_name": "CLOTHES",
+        "description": "Durable canvas backpack with laptop compartment and multiple pockets",
+        "price": Decimal("69.99"),
+        "size": "15L",
+        "color": "Olive",
+        "is_active": True,
+        "image_url": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800&q=80"
     },
     
-    # Electronics
+    # Home Interiors - NEW PRODUCTS
     {
-        "name": "Wireless Earbuds",
-        "title": "Pro Earbuds",
-        "category_name": "ELECTRONICS",
-        "description": "Bluetooth 5.0 wireless earbuds with noise cancellation",
+        "name": "Floor Lamp",
+        "title": "Arc Floor Lamp",
+        "category_name": "HOME",
+        "description": "Modern arc floor lamp with marble base and adjustable height",
         "price": Decimal("89.99"),
+        "size": "72 inch",
+        "color": "Gold",
+        "is_active": True,
+        "image_url": "https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=800&q=80"
+    },
+    {
+        "name": "Wall Mirror",
+        "title": "Round Mirror",
+        "category_name": "HOME",
+        "description": "Large round wall mirror with gold metal frame",
+        "price": Decimal("79.99"),
+        "size": "32 inch",
+        "color": "Gold",
+        "is_active": True,
+        "image_url": "https://images.unsplash.com/photo-1618220179428-22790b461013?w=800&q=80"
+    },
+    {
+        "name": "Bookshelf",
+        "title": "Modern Shelf",
+        "category_name": "HOME",
+        "description": "5-tier wooden bookshelf with industrial metal frame",
+        "price": Decimal("129.99"),
+        "size": "72x36",
+        "color": "Walnut",
+        "is_active": True,
+        "image_url": "https://images.unsplash.com/photo-1594620302200-9a762244a156?w=800&q=80"
+    },
+    {
+        "name": "Dining Chair",
+        "title": "Velvet Chair",
+        "category_name": "HOME",
+        "description": "Upholstered velvet dining chair with wooden legs",
+        "price": Decimal("119.99"),
+        "size": None,
+        "color": "Emerald",
+        "is_active": True,
+        "image_url": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80"
+    },
+    {
+        "name": "Area Rug",
+        "title": "Geometric Rug",
+        "category_name": "HOME",
+        "description": "Contemporary geometric pattern area rug in neutral tones",
+        "price": Decimal("189.99"),
+        "size": "8x10",
+        "color": "Beige",
+        "is_active": True,
+        "image_url": "https://images.unsplash.com/photo-1600166898405-da9535204843?w=800&q=80"
+    },
+    
+    # Electronics - NEW PRODUCTS
+    {
+        "name": "Mechanical Keyboard",
+        "title": "RGB Keyboard",
+        "category_name": "ELECTRONICS",
+        "description": "Gaming mechanical keyboard with RGB backlight and brown switches",
+        "price": Decimal("119.99"),
         "size": None,
         "color": "Black",
         "is_active": True,
-        "image_url": "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=800&q=80"
+        "image_url": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=800&q=80"
     },
     {
-        "name": "Smart Watch",
-        "title": "Fitness Tracker",
+        "name": "Webcam",
+        "title": "HD Webcam",
         "category_name": "ELECTRONICS",
-        "description": "Waterproof smartwatch with heart rate monitor",
-        "price": Decimal("149.99"),
-        "size": "42mm",
-        "color": "Silver",
+        "description": "1080p HD webcam with autofocus and built-in microphone",
+        "price": Decimal("79.99"),
+        "size": None,
+        "color": "Black",
         "is_active": True,
-        "image_url": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&q=80"
+        "image_url": "https://images.unsplash.com/photo-1625948515291-69613efd103f?w=800&q=80"
     },
     {
-        "name": "Laptop Stand",
-        "title": "Aluminum Stand",
+        "name": "Tablet Stand",
+        "title": "Adjustable Stand",
         "category_name": "ELECTRONICS",
-        "description": "Ergonomic aluminum laptop stand with adjustable height",
-        "price": Decimal("34.99"),
+        "description": "Universal tablet stand with 360-degree rotation",
+        "price": Decimal("24.99"),
         "size": None,
         "color": "Silver",
         "is_active": True,
-        "image_url": "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=800&q=80"
+        "image_url": "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=800&q=80"
     },
     {
-        "name": "Bluetooth Speaker",
-        "title": "Portable Speaker",
+        "name": "Power Bank",
+        "title": "20000mAh Charger",
         "category_name": "ELECTRONICS",
-        "description": "Waterproof portable speaker with 360-degree sound",
-        "price": Decimal("69.99"),
-        "size": None,
-        "color": "Blue",
+        "description": "High-capacity power bank with fast charging and dual USB ports",
+        "price": Decimal("39.99"),
+        "size": "20000mAh",
+        "color": "Black",
         "is_active": True,
-        "image_url": "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=800&q=80"
+        "image_url": "https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?w=800&q=80"
     },
     {
-        "name": "Wireless Mouse",
-        "title": "Ergonomic Mouse",
+        "name": "USB Hub",
+        "title": "7-Port Hub",
         "category_name": "ELECTRONICS",
-        "description": "Wireless ergonomic mouse with adjustable DPI",
+        "description": "USB 3.0 hub with 7 ports and individual power switches",
         "price": Decimal("29.99"),
         "size": None,
         "color": "Black",
         "is_active": True,
-        "image_url": "https://images.unsplash.com/photo-1527814050087-3793815479db?w=800&q=80"
+        "image_url": "https://images.unsplash.com/photo-1625948515291-69613efd103f?w=800&q=80"
     },
     
-    # Beauty & Health
+    # Beauty & Health - NEW PRODUCTS
     {
-        "name": "Face Serum",
-        "title": "Vitamin C Serum",
+        "name": "Face Mask Set",
+        "title": "Hydrating Masks",
         "category_name": "BEAUTY",
-        "description": "Anti-aging vitamin C face serum for bright skin",
-        "price": Decimal("34.99"),
-        "size": "30ml",
+        "description": "Pack of 10 hydrating sheet masks with hyaluronic acid",
+        "price": Decimal("24.99"),
+        "size": "10 pack",
         "color": None,
         "is_active": True,
-        "image_url": "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=800&q=80"
+        "image_url": "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&q=80"
     },
     {
-        "name": "Hair Dryer",
-        "title": "Ionic Hair Dryer",
+        "name": "Nail Polish Set",
+        "title": "Classic Colors",
         "category_name": "BEAUTY",
-        "description": "Professional ionic hair dryer with multiple heat settings",
-        "price": Decimal("59.99"),
-        "size": None,
-        "color": "Rose Gold",
+        "description": "Set of 5 long-lasting nail polish in classic shades",
+        "price": Decimal("29.99"),
+        "size": "5x15ml",
+        "color": "Multi",
         "is_active": True,
-        "image_url": "https://images.unsplash.com/photo-1522338140262-f46f5913618a?w=800&q=80"
+        "image_url": "https://images.unsplash.com/photo-1610992015732-2449b76344bc?w=800&q=80"
     },
     {
-        "name": "Moisturizer",
-        "title": "Daily Hydrator",
+        "name": "Facial Roller",
+        "title": "Jade Roller",
         "category_name": "BEAUTY",
-        "description": "Lightweight daily moisturizer for all skin types",
-        "price": Decimal("22.99"),
+        "description": "Natural jade facial roller for massage and lymphatic drainage",
+        "price": Decimal("19.99"),
+        "size": None,
+        "color": "Green",
+        "is_active": True,
+        "image_url": "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=800&q=80"
+    },
+    {
+        "name": "Perfume",
+        "title": "Floral Essence",
+        "category_name": "BEAUTY",
+        "description": "Elegant floral fragrance with notes of jasmine and rose",
+        "price": Decimal("64.99"),
         "size": "50ml",
         "color": None,
         "is_active": True,
-        "image_url": "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=800&q=80"
+        "image_url": "https://images.unsplash.com/photo-1541643600914-78b084683601?w=800&q=80"
     },
     {
-        "name": "Makeup Brush Set",
-        "title": "Pro Brush Kit",
+        "name": "Body Lotion",
+        "title": "Shea Butter Cream",
         "category_name": "BEAUTY",
-        "description": "12-piece professional makeup brush set with case",
-        "price": Decimal("44.99"),
-        "size": None,
-        "color": "Black",
-        "is_active": True,
-        "image_url": "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=800&q=80"
-    },
-    {
-        "name": "Essential Oils",
-        "title": "Aromatherapy Set",
-        "category_name": "BEAUTY",
-        "description": "Set of 6 pure essential oils for relaxation",
-        "price": Decimal("39.99"),
-        "size": "10ml",
+        "description": "Rich moisturizing body lotion with shea butter and vitamin E",
+        "price": Decimal("18.99"),
+        "size": "200ml",
         "color": None,
         "is_active": True,
         "image_url": "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=800&q=80"
     },
     
-    # Sports & Outdoors
+    # Sports & Outdoors - NEW PRODUCTS
     {
-        "name": "Yoga Mat",
-        "title": "Premium Mat",
+        "name": "Jump Rope",
+        "title": "Speed Rope",
         "category_name": "SPORTS",
-        "description": "Non-slip yoga mat with carrying strap",
-        "price": Decimal("29.99"),
-        "size": "6ft",
-        "color": "Purple",
-        "is_active": True,
-        "image_url": "https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f?w=800&q=80"
-    },
-    {
-        "name": "Water Bottle",
-        "title": "Insulated Bottle",
-        "category_name": "SPORTS",
-        "description": "Stainless steel insulated water bottle keeps drinks cold for 24h",
-        "price": Decimal("19.99"),
-        "size": "32oz",
-        "color": "Blue",
-        "is_active": True,
-        "image_url": "https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=800&q=80"
-    },
-    {
-        "name": "Running Shoes",
-        "title": "Trail Runners",
-        "category_name": "SPORTS",
-        "description": "Lightweight trail running shoes with excellent grip",
-        "price": Decimal("79.99"),
-        "size": "10",
+        "description": "Adjustable speed jump rope with ball bearings for smooth rotation",
+        "price": Decimal("14.99"),
+        "size": "9ft",
         "color": "Black",
         "is_active": True,
-        "image_url": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&q=80"
+        "image_url": "https://images.unsplash.com/photo-1517836477839-7072aaa8b121?w=800&q=80"
     },
     {
-        "name": "Dumbbells Set",
-        "title": "Adjustable Weights",
+        "name": "Foam Roller",
+        "title": "Muscle Roller",
         "category_name": "SPORTS",
-        "description": "Adjustable dumbbell set 5-25 lbs with storage rack",
-        "price": Decimal("99.99"),
-        "size": None,
-        "color": "Gray",
-        "is_active": True,
-        "image_url": "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=800&q=80"
-    },
-    {
-        "name": "Resistance Bands",
-        "title": "Exercise Bands",
-        "category_name": "SPORTS",
-        "description": "Set of 5 resistance bands for strength training",
+        "description": "High-density foam roller for muscle recovery and massage",
         "price": Decimal("24.99"),
-        "size": None,
-        "color": "Multi",
+        "size": "18 inch",
+        "color": "Blue",
         "is_active": True,
-        "image_url": "https://images.unsplash.com/photo-1598632640487-6ea4a4e8b963?w=800&q=80"
+        "image_url": "https://images.unsplash.com/photo-1599058917212-d750089bc07e?w=800&q=80"
+    },
+    {
+        "name": "Gym Bag",
+        "title": "Duffel Bag",
+        "category_name": "SPORTS",
+        "description": "Large duffel bag with shoe compartment and water-resistant material",
+        "price": Decimal("49.99"),
+        "size": "50L",
+        "color": "Black",
+        "is_active": True,
+        "image_url": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800&q=80"
+    },
+    {
+        "name": "Boxing Gloves",
+        "title": "Training Gloves",
+        "category_name": "SPORTS",
+        "description": "Professional boxing gloves with wrist support and padding",
+        "price": Decimal("59.99"),
+        "size": "14oz",
+        "color": "Red",
+        "is_active": True,
+        "image_url": "https://images.unsplash.com/photo-1517438476312-10d79c077509?w=800&q=80"
+    },
+    {
+        "name": "Tennis Racket",
+        "title": "Pro Racket",
+        "category_name": "SPORTS",
+        "description": "Lightweight carbon fiber tennis racket with overgrip",
+        "price": Decimal("89.99"),
+        "size": "27 inch",
+        "color": "Blue",
+        "is_active": True,
+        "image_url": "https://images.unsplash.com/photo-1622163642998-1ea32b0bbc67?w=800&q=80"
     }
 ]
 
 
 def download_image(url, timeout=10):
     """
-    Download image from URL and return as ContentFile
+    Download image from URL and return as bytes
     """
     try:
         response = requests.get(url, timeout=timeout, stream=True)
         response.raise_for_status()
-        
-        # Read image content
-        image_content = BytesIO(response.content)
-        return image_content.read()
+        return response.content
     except Exception as e:
-        print(f"Error downloading image from {url}: {str(e)}")
+        print(f"  ⚠ Error downloading image: {str(e)}")
         return None
 
 
-def create_test_data():
+def smart_resize_image(image_data, max_width=800, max_height=600):
+    """
+    Intelligently resize image ONLY if it exceeds max dimensions.
+    If image is smaller than max dimensions, keep original size.
+    
+    Args:
+        image_data: Image bytes
+        max_width: Maximum allowed width (default 800)
+        max_height: Maximum allowed height (default 600)
+    
+    Returns:
+        Resized image bytes (or original if smaller)
+    """
+    try:
+        # Open image from bytes
+        img = Image.open(BytesIO(image_data))
+        original_width, original_height = img.size
+        
+        # Convert RGBA to RGB if necessary
+        if img.mode in ('RGBA', 'LA', 'P'):
+            background = Image.new('RGB', img.size, (255, 255, 255))
+            if img.mode == 'P':
+                img = img.convert('RGBA')
+            background.paste(img, mask=img.split()[-1] if img.mode == 'RGBA' else None)
+            img = background
+        
+        # Check if image exceeds max dimensions
+        if original_width > max_width or original_height > max_height:
+            # Calculate resize ratio to maintain aspect ratio
+            width_ratio = max_width / original_width
+            height_ratio = max_height / original_height
+            resize_ratio = min(width_ratio, height_ratio)
+            
+            new_width = int(original_width * resize_ratio)
+            new_height = int(original_height * resize_ratio)
+            
+            # Resize image
+            img = img.resize((new_width, new_height), Image.Resampling.LANCZOS)
+            
+            # Save to bytes
+            output = BytesIO()
+            img.save(output, format='JPEG', quality=85, optimize=True)
+            output.seek(0)
+            
+            return output.read(), True, (original_width, original_height), (new_width, new_height)
+        else:
+            # Image is smaller than max dimensions, keep original
+            output = BytesIO()
+            img.save(output, format='JPEG', quality=85, optimize=True)
+            output.seek(0)
+            
+            return output.read(), False, (original_width, original_height), (original_width, original_height)
+            
+    except Exception as e:
+        print(f"  ⚠ Error processing image: {str(e)}")
+        return image_data, False, (0, 0), (0, 0)
+
+
+def create_test_data(max_width=800, max_height=600):
     """
     Run this function in Django shell or management command to populate database
-    Usage: python manage.py shell
-    >>> from your_app.test_data import create_test_data
-    >>> create_test_data()
+    Images will keep their original size if smaller than max dimensions.
+    Images will be resized ONLY if they exceed max dimensions.
     
-    Note: Make sure 'requests' library is installed: pip install requests
+    Args:
+        max_width: Maximum allowed width (default 800)
+        max_height: Maximum allowed height (default 600)
+    
+    Usage: 
+        python manage.py shell
+        >>> from your_app.test_data import create_test_data
+        >>> create_test_data()  # Default: max 800x600
+        >>> create_test_data(max_width=1200, max_height=900)  # Custom max size
+    
+    Note: Make sure libraries are installed: pip install requests Pillow
     """
     from SearchFiltering.models import Category, Product
     
-    print("Starting test data creation...")
-    print("="*60)
+    print("="*70)
+    print("STARTING TEST DATA CREATION WITH NEW PRODUCTS")
+    print("="*70)
+    print(f"Max dimensions: {max_width}x{max_height}")
+    print("Images smaller than max will keep original size")
+    print("Images larger than max will be resized proportionally")
+    print("="*70)
     
-    # Clear existing data (optional)
+    # Clear existing data
     Product.objects.all().delete()
     Category.objects.all().delete()
-    print("Cleared existing data\n")
+    print("\n✓ Cleared existing data\n")
     
     # Create categories
     category_objects = {}
@@ -362,39 +432,58 @@ def create_test_data():
     for cat_data in categories_data:
         category = Category.objects.create(**cat_data)
         category_objects[cat_data["name"]] = category
-        print(f"  ✓ Created category: {category.name}")
+        print(f"  ✓ {category.name}")
     
-    print(f"\n{'='*60}")
-    print("Downloading images and creating products...")
-    print(f"{'='*60}\n")
+    print(f"\n{'='*70}")
+    print("DOWNLOADING AND PROCESSING IMAGES")
+    print(f"{'='*70}\n")
     
-    # Create products with real images
+    # Statistics
     success_count = 0
     fail_count = 0
+    resized_count = 0
+    kept_original_count = 0
+    total_size_before = 0
+    total_size_after = 0
     
     for i, prod_data in enumerate(products_data, 1):
         category_name = prod_data.pop("category_name")
         image_url = prod_data.pop("image_url")
         
-        print(f"[{i}/{len(products_data)}] Processing: {prod_data['title']}")
+        print(f"[{i}/{len(products_data)}] {prod_data['title']}")
         
         # Download image
         image_data = download_image(image_url)
         
         if image_data:
-            # Create product with image
-            filename = f"{prod_data['name'].lower().replace(' ', '_')}.jpg"
+            original_size = len(image_data)
+            total_size_before += original_size
             
+            # Smart resize (only if needed)
+            processed_data, was_resized, orig_dims, new_dims = smart_resize_image(
+                image_data, max_width, max_height
+            )
+            
+            final_size = len(processed_data)
+            total_size_after += final_size
+            
+            # Create product
+            filename = f"{prod_data['name'].lower().replace(' ', '_')}.jpg"
             product = Product.objects.create(
                 category=category_objects[category_name],
                 created_at=timezone.now(),
                 **prod_data
             )
+            product.image.save(filename, ContentFile(processed_data), save=True)
             
-            # Save image to product
-            product.image.save(filename, ContentFile(image_data), save=True)
+            # Display info
+            if was_resized:
+                print(f"  ✓ Resized: {orig_dims[0]}x{orig_dims[1]} → {new_dims[0]}x{new_dims[1]} ({original_size//1024}KB → {final_size//1024}KB)")
+                resized_count += 1
+            else:
+                print(f"  ✓ Original kept: {orig_dims[0]}x{orig_dims[1]} ({final_size//1024}KB)")
+                kept_original_count += 1
             
-            print(f"  ✓ Created with image ({len(image_data)} bytes)")
             success_count += 1
         else:
             # Create product without image
@@ -403,35 +492,66 @@ def create_test_data():
                 created_at=timezone.now(),
                 **prod_data
             )
-            print(f"  ⚠ Created without image (download failed)")
+            print(f"  ✗ Failed to download")
             fail_count += 1
     
-    # Summary
-    print(f"\n{'='*60}")
+    # Final Summary
+    print(f"\n{'='*70}")
     print("SUMMARY")
-    print(f"{'='*60}")
-    print(f"✓ Total Categories: {Category.objects.count()}")
-    print(f"✓ Total Products: {Product.objects.count()}")
+    print(f"{'='*70}")
+    print(f"✓ Categories created: {Category.objects.count()}")
+    print(f"✓ Products created: {Product.objects.count()}")
     print(f"✓ Products with images: {success_count}")
+    print(f"  • Images resized: {resized_count}")
+    print(f"  • Original size kept: {kept_original_count}")
     if fail_count > 0:
-        print(f"⚠ Products without images: {fail_count}")
-    print(f"{'='*60}")
+        print(f"✗ Failed downloads: {fail_count}")
+    
+    if success_count > 0:
+        print(f"\n📊 STORAGE OPTIMIZATION:")
+        print(f"   Total before: {total_size_before//1024}KB")
+        print(f"   Total after: {total_size_after//1024}KB")
+        if total_size_before > total_size_after:
+            savings = ((total_size_before - total_size_after) / total_size_before * 100)
+            print(f"   Saved: {savings:.1f}%")
+        else:
+            print(f"   No compression needed")
+    print(f"{'='*70}\n")
 
 
-# Management Command Template
+# Management Command
 MANAGEMENT_COMMAND = """
-# Save this as: your_app/management/commands/load_test_data.py
+# Save as: your_app/management/commands/load_test_data.py
 
 from django.core.management.base import BaseCommand
-from SearchFiltering.test_data import create_test_data
+from your_app.test_data import create_test_data
 
 class Command(BaseCommand):
-    help = 'Load test data for products and categories with real images'
+    help = 'Load NEW test data with smart image resizing'
+
+    def add_arguments(self, parser):
+        parser.add_argument(
+            '--max-width',
+            type=int,
+            default=800,
+            help='Maximum image width (default: 800)'
+        )
+        parser.add_argument(
+            '--max-height',
+            type=int,
+            default=600,
+            help='Maximum image height (default: 600)'
+        )
 
     def handle(self, *args, **options):
-        self.stdout.write(self.style.WARNING('Loading test data...'))
-        create_test_data()
-        self.stdout.write(self.style.SUCCESS('\\n✓ Test data loaded successfully!'))
+        max_width = options['max_width']
+        max_height = options['max_height']
+        
+        self.stdout.write(self.style.WARNING(f'Loading test data (max: {max_width}x{max_height})...'))
+        create_test_data(max_width=max_width, max_height=max_height)
+        self.stdout.write(self.style.SUCCESS('✓ Complete!'))
 
-# Usage: python manage.py load_test_data
+# Usage:
+# python manage.py load_test_data
+# python manage.py load_test_data --max-width 1200 --max-height 900
 """
