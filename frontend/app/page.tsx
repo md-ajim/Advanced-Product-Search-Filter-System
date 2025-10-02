@@ -6,7 +6,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
-import { SetStateAction, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import axios from "axios";
 import { useRouter, useParams, useSearchParams } from "next/navigation";
@@ -121,7 +121,7 @@ export default function Home() {
     }
   }, [search_query, rating, currentPage]);
 
-  const HandelCategoryChange = async (category: SetStateAction<never[]>) => {
+  const HandelCategoryChange = async (category = []) => {
     setIsCategory(category);
     FilterProductUpdate();
   };
