@@ -33,291 +33,346 @@ categories_data = [
     }
 ]
 
-# NEW Test data for Products with real image URLs
+# NEW Test data for Products with real image URLs (30 products)
 products_data = [
-    # Clothes - NEW PRODUCTS
+    # Clothes - 6 products
     {
-        "name": "Hooded Sweatshirt",
-        "title": "Urban Hoodie",
+        "name": "Casual Blazer",
+        "title": "Men's Slim Blazer",
         "category_name": "CLOTHES",
-        "description": "Premium cotton blend hoodie with front pocket and adjustable drawstring",
-        "price": Decimal("45.99"),
+        "description": "Elegant slim-fit blazer perfect for business casual occasions",
+        "price": Decimal("89.99"),
         "size": "L",
-        "color": "Gray",
-        "is_active": True,
-        "image_url": "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=800&q=80"
-    },
-    {
-        "name": "Chino Pants",
-        "title": "Slim Chinos",
-        "category_name": "CLOTHES",
-        "description": "Versatile slim-fit chino pants perfect for casual or semi-formal wear",
-        "price": Decimal("54.99"),
-        "size": "32",
-        "color": "Khaki",
-        "is_active": True,
-        "image_url": "https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=800&q=80"
-    },
-    {
-        "name": "Winter Coat",
-        "title": "Wool Overcoat",
-        "category_name": "CLOTHES",
-        "description": "Classic wool blend overcoat with button closure and side pockets",
-        "price": Decimal("159.99"),
-        "size": "M",
         "color": "Navy",
         "is_active": True,
-        "image_url": "https://images.unsplash.com/photo-1539533113208-f6df8cc8b543?w=800&q=80"
+        "image_url": "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=800&q=80"
     },
     {
-        "name": "Polo Shirt",
-        "title": "Classic Polo",
+        "name": "Knit Sweater",
+        "title": "Cozy Pullover",
         "category_name": "CLOTHES",
-        "description": "Cotton pique polo shirt with three-button placket",
-        "price": Decimal("29.99"),
+        "description": "Warm cable-knit sweater for cold weather comfort",
+        "price": Decimal("42.99"),
         "size": "M",
-        "color": "White",
+        "color": "Burgundy",
         "is_active": True,
-        "image_url": "https://images.unsplash.com/photo-1586363104862-3a5e2ab60d99?w=800&q=80"
+        "image_url": "https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=800&q=80"
     },
     {
-        "name": "Canvas Backpack",
-        "title": "Travel Backpack",
+        "name": "Cargo Shorts",
+        "title": "Summer Shorts",
         "category_name": "CLOTHES",
-        "description": "Durable canvas backpack with laptop compartment and multiple pockets",
-        "price": Decimal("69.99"),
-        "size": "15L",
+        "description": "Comfortable cargo shorts with multiple pockets",
+        "price": Decimal("34.99"),
+        "size": "32",
         "color": "Olive",
         "is_active": True,
-        "image_url": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800&q=80"
+        "image_url": "https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=800&q=80"
+    },
+    {
+        "name": "Athletic Leggings",
+        "title": "Workout Tights",
+        "category_name": "CLOTHES",
+        "description": "High-waist athletic leggings with moisture-wicking fabric",
+        "price": Decimal("38.99"),
+        "size": "S",
+        "color": "Black",
+        "is_active": True,
+        "image_url": "https://images.unsplash.com/photo-1506629082955-511b1aa562c8?w=800&q=80"
+    },
+    {
+        "name": "Denim Jacket",
+        "title": "Classic Jean Jacket",
+        "category_name": "CLOTHES",
+        "description": "Timeless denim jacket with button closure",
+        "price": Decimal("59.99"),
+        "size": "M",
+        "color": "Blue",
+        "is_active": True,
+        "image_url": "https://images.unsplash.com/photo-1576995853123-5a10305d93c0?w=800&q=80"
+    },
+    {
+        "name": "Ankle Boots",
+        "title": "Leather Boots",
+        "category_name": "CLOTHES",
+        "description": "Genuine leather ankle boots with side zipper",
+        "price": Decimal("94.99"),
+        "size": "9",
+        "color": "Brown",
+        "is_active": True,
+        "image_url": "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=800&q=80"
     },
     
-    # Home Interiors - NEW PRODUCTS
+    # Home Interiors - 6 products
     {
-        "name": "Floor Lamp",
-        "title": "Arc Floor Lamp",
+        "name": "Pendant Light",
+        "title": "Modern Chandelier",
         "category_name": "HOME",
-        "description": "Modern arc floor lamp with marble base and adjustable height",
-        "price": Decimal("89.99"),
-        "size": "72 inch",
-        "color": "Gold",
-        "is_active": True,
-        "image_url": "https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=800&q=80"
-    },
-    {
-        "name": "Wall Mirror",
-        "title": "Round Mirror",
-        "category_name": "HOME",
-        "description": "Large round wall mirror with gold metal frame",
-        "price": Decimal("79.99"),
-        "size": "32 inch",
-        "color": "Gold",
-        "is_active": True,
-        "image_url": "https://images.unsplash.com/photo-1618220179428-22790b461013?w=800&q=80"
-    },
-    {
-        "name": "Bookshelf",
-        "title": "Modern Shelf",
-        "category_name": "HOME",
-        "description": "5-tier wooden bookshelf with industrial metal frame",
+        "description": "Elegant crystal pendant light for dining room",
         "price": Decimal("129.99"),
-        "size": "72x36",
-        "color": "Walnut",
+        "size": "24 inch",
+        "color": "Chrome",
         "is_active": True,
-        "image_url": "https://images.unsplash.com/photo-1594620302200-9a762244a156?w=800&q=80"
+        "image_url": "https://images.unsplash.com/photo-1567225477277-c1c5b3e0d9d1?w=800&q=80"
     },
     {
-        "name": "Dining Chair",
-        "title": "Velvet Chair",
+        "name": "Accent Chair",
+        "title": "Mid-Century Chair",
         "category_name": "HOME",
-        "description": "Upholstered velvet dining chair with wooden legs",
-        "price": Decimal("119.99"),
-        "size": None,
-        "color": "Emerald",
-        "is_active": True,
-        "image_url": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80"
-    },
-    {
-        "name": "Area Rug",
-        "title": "Geometric Rug",
-        "category_name": "HOME",
-        "description": "Contemporary geometric pattern area rug in neutral tones",
+        "description": "Stylish mid-century modern accent chair with wooden legs",
         "price": Decimal("189.99"),
-        "size": "8x10",
-        "color": "Beige",
-        "is_active": True,
-        "image_url": "https://images.unsplash.com/photo-1600166898405-da9535204843?w=800&q=80"
-    },
-    
-    # Electronics - NEW PRODUCTS
-    {
-        "name": "Mechanical Keyboard",
-        "title": "RGB Keyboard",
-        "category_name": "ELECTRONICS",
-        "description": "Gaming mechanical keyboard with RGB backlight and brown switches",
-        "price": Decimal("119.99"),
         "size": None,
+        "color": "Mustard",
+        "is_active": True,
+        "image_url": "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?w=800&q=80"
+    },
+    {
+        "name": "Side Table",
+        "title": "Nightstand",
+        "category_name": "HOME",
+        "description": "Compact side table with drawer storage",
+        "price": Decimal("79.99"),
+        "size": "18x18",
+        "color": "White",
+        "is_active": True,
+        "image_url": "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&q=80"
+    },
+    {
+        "name": "Wall Clock",
+        "title": "Vintage Clock",
+        "category_name": "HOME",
+        "description": "Large vintage-style wall clock with Roman numerals",
+        "price": Decimal("44.99"),
+        "size": "20 inch",
         "color": "Black",
         "is_active": True,
-        "image_url": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=800&q=80"
+        "image_url": "https://images.unsplash.com/photo-1563861826100-9cb868fdbe1c?w=800&q=80"
     },
     {
-        "name": "Webcam",
-        "title": "HD Webcam",
+        "name": "Throw Blanket",
+        "title": "Soft Blanket",
+        "category_name": "HOME",
+        "description": "Ultra-soft fleece throw blanket for couch",
+        "price": Decimal("29.99"),
+        "size": "50x60",
+        "color": "Gray",
+        "is_active": True,
+        "image_url": "https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=800&q=80"
+    },
+    {
+        "name": "Picture Frame Set",
+        "title": "Gallery Frames",
+        "category_name": "HOME",
+        "description": "Set of 5 black picture frames in various sizes",
+        "price": Decimal("39.99"),
+        "size": "Multi",
+        "color": "Black",
+        "is_active": True,
+        "image_url": "https://images.unsplash.com/photo-1582053433976-25c00369fc93?w=800&q=80"
+    },
+    
+    # Electronics - 6 products
+    {
+        "name": "Wireless Charger",
+        "title": "Fast Charging Pad",
         "category_name": "ELECTRONICS",
-        "description": "1080p HD webcam with autofocus and built-in microphone",
+        "description": "Qi wireless charging pad with LED indicator",
+        "price": Decimal("24.99"),
+        "size": None,
+        "color": "White",
+        "is_active": True,
+        "image_url": "https://images.unsplash.com/photo-1591290619762-71d1e58e7a1b?w=800&q=80"
+    },
+    {
+        "name": "Gaming Headset",
+        "title": "RGB Headphones",
+        "category_name": "ELECTRONICS",
+        "description": "7.1 surround sound gaming headset with microphone",
         "price": Decimal("79.99"),
         "size": None,
         "color": "Black",
         "is_active": True,
-        "image_url": "https://images.unsplash.com/photo-1625948515291-69613efd103f?w=800&q=80"
+        "image_url": "https://images.unsplash.com/photo-1599669454699-248893623440?w=800&q=80"
     },
     {
-        "name": "Tablet Stand",
-        "title": "Adjustable Stand",
+        "name": "Phone Case",
+        "title": "Protective Case",
         "category_name": "ELECTRONICS",
-        "description": "Universal tablet stand with 360-degree rotation",
-        "price": Decimal("24.99"),
-        "size": None,
-        "color": "Silver",
+        "description": "Shockproof phone case with raised edges",
+        "price": Decimal("14.99"),
+        "size": "iPhone",
+        "color": "Clear",
         "is_active": True,
-        "image_url": "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=800&q=80"
+        "image_url": "https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=800&q=80"
     },
     {
-        "name": "Power Bank",
-        "title": "20000mAh Charger",
+        "name": "Smart LED Bulb",
+        "title": "WiFi Light Bulb",
         "category_name": "ELECTRONICS",
-        "description": "High-capacity power bank with fast charging and dual USB ports",
-        "price": Decimal("39.99"),
-        "size": "20000mAh",
-        "color": "Black",
-        "is_active": True,
-        "image_url": "https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?w=800&q=80"
-    },
-    {
-        "name": "USB Hub",
-        "title": "7-Port Hub",
-        "category_name": "ELECTRONICS",
-        "description": "USB 3.0 hub with 7 ports and individual power switches",
-        "price": Decimal("29.99"),
-        "size": None,
-        "color": "Black",
-        "is_active": True,
-        "image_url": "https://images.unsplash.com/photo-1625948515291-69613efd103f?w=800&q=80"
-    },
-    
-    # Beauty & Health - NEW PRODUCTS
-    {
-        "name": "Face Mask Set",
-        "title": "Hydrating Masks",
-        "category_name": "BEAUTY",
-        "description": "Pack of 10 hydrating sheet masks with hyaluronic acid",
-        "price": Decimal("24.99"),
-        "size": "10 pack",
-        "color": None,
-        "is_active": True,
-        "image_url": "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&q=80"
-    },
-    {
-        "name": "Nail Polish Set",
-        "title": "Classic Colors",
-        "category_name": "BEAUTY",
-        "description": "Set of 5 long-lasting nail polish in classic shades",
-        "price": Decimal("29.99"),
-        "size": "5x15ml",
+        "description": "Color-changing smart bulb compatible with Alexa",
+        "price": Decimal("19.99"),
+        "size": "E26",
         "color": "Multi",
         "is_active": True,
-        "image_url": "https://images.unsplash.com/photo-1610992015732-2449b76344bc?w=800&q=80"
+        "image_url": "https://images.unsplash.com/photo-1550985616-10810253b84d?w=800&q=80"
     },
     {
-        "name": "Facial Roller",
-        "title": "Jade Roller",
-        "category_name": "BEAUTY",
-        "description": "Natural jade facial roller for massage and lymphatic drainage",
-        "price": Decimal("19.99"),
-        "size": None,
-        "color": "Green",
+        "name": "Desk Monitor",
+        "title": "24-inch Display",
+        "category_name": "ELECTRONICS",
+        "description": "Full HD IPS monitor with ultra-thin bezels",
+        "price": Decimal("159.99"),
+        "size": "24 inch",
+        "color": "Black",
         "is_active": True,
-        "image_url": "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=800&q=80"
+        "image_url": "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=800&q=80"
     },
     {
-        "name": "Perfume",
-        "title": "Floral Essence",
+        "name": "External SSD",
+        "title": "Portable Drive",
+        "category_name": "ELECTRONICS",
+        "description": "1TB portable SSD with USB-C connection",
+        "price": Decimal("99.99"),
+        "size": "1TB",
+        "color": "Gray",
+        "is_active": True,
+        "image_url": "https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=800&q=80"
+    },
+    
+    # Beauty & Health - 6 products
+    {
+        "name": "Lip Gloss Set",
+        "title": "Shine Collection",
         "category_name": "BEAUTY",
-        "description": "Elegant floral fragrance with notes of jasmine and rose",
-        "price": Decimal("64.99"),
+        "description": "Set of 6 moisturizing lip glosses in trendy shades",
+        "price": Decimal("26.99"),
+        "size": "6x8ml",
+        "color": "Multi",
+        "is_active": True,
+        "image_url": "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=800&q=80"
+    },
+    {
+        "name": "Eyeshadow Palette",
+        "title": "Nude Palette",
+        "category_name": "BEAUTY",
+        "description": "18-color eyeshadow palette with mirror",
+        "price": Decimal("32.99"),
+        "size": "18 colors",
+        "color": "Neutral",
+        "is_active": True,
+        "image_url": "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=800&q=80"
+    },
+    {
+        "name": "Micellar Water",
+        "title": "Makeup Remover",
+        "category_name": "BEAUTY",
+        "description": "Gentle micellar water for all skin types",
+        "price": Decimal("16.99"),
+        "size": "400ml",
+        "color": None,
+        "is_active": True,
+        "image_url": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=800&q=80"
+    },
+    {
+        "name": "Hair Straightener",
+        "title": "Ceramic Iron",
+        "category_name": "BEAUTY",
+        "description": "Professional ceramic hair straightener with adjustable temperature",
+        "price": Decimal("49.99"),
+        "size": None,
+        "color": "Black",
+        "is_active": True,
+        "image_url": "https://images.unsplash.com/photo-1526045478516-99145907023c?w=800&q=80"
+    },
+    {
+        "name": "Face Cream",
+        "title": "Anti-Aging Cream",
+        "category_name": "BEAUTY",
+        "description": "Retinol night cream for fine lines and wrinkles",
+        "price": Decimal("39.99"),
         "size": "50ml",
         "color": None,
         "is_active": True,
-        "image_url": "https://images.unsplash.com/photo-1541643600914-78b084683601?w=800&q=80"
+        "image_url": "https://images.unsplash.com/photo-1556228852-80f5ac04fa36?w=800&q=80"
     },
     {
-        "name": "Body Lotion",
-        "title": "Shea Butter Cream",
+        "name": "Bath Bombs",
+        "title": "Spa Set",
         "category_name": "BEAUTY",
-        "description": "Rich moisturizing body lotion with shea butter and vitamin E",
-        "price": Decimal("18.99"),
-        "size": "200ml",
-        "color": None,
+        "description": "Luxury bath bomb set with essential oils",
+        "price": Decimal("21.99"),
+        "size": "6 pack",
+        "color": "Multi",
         "is_active": True,
         "image_url": "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=800&q=80"
     },
     
-    # Sports & Outdoors - NEW PRODUCTS
+    # Sports & Outdoors - 6 products
     {
-        "name": "Jump Rope",
-        "title": "Speed Rope",
+        "name": "Bike Helmet",
+        "title": "Safety Helmet",
         "category_name": "SPORTS",
-        "description": "Adjustable speed jump rope with ball bearings for smooth rotation",
-        "price": Decimal("14.99"),
-        "size": "9ft",
-        "color": "Black",
-        "is_active": True,
-        "image_url": "https://images.unsplash.com/photo-1517836477839-7072aaa8b121?w=800&q=80"
-    },
-    {
-        "name": "Foam Roller",
-        "title": "Muscle Roller",
-        "category_name": "SPORTS",
-        "description": "High-density foam roller for muscle recovery and massage",
-        "price": Decimal("24.99"),
-        "size": "18 inch",
-        "color": "Blue",
-        "is_active": True,
-        "image_url": "https://images.unsplash.com/photo-1599058917212-d750089bc07e?w=800&q=80"
-    },
-    {
-        "name": "Gym Bag",
-        "title": "Duffel Bag",
-        "category_name": "SPORTS",
-        "description": "Large duffel bag with shoe compartment and water-resistant material",
-        "price": Decimal("49.99"),
-        "size": "50L",
-        "color": "Black",
-        "is_active": True,
-        "image_url": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800&q=80"
-    },
-    {
-        "name": "Boxing Gloves",
-        "title": "Training Gloves",
-        "category_name": "SPORTS",
-        "description": "Professional boxing gloves with wrist support and padding",
-        "price": Decimal("59.99"),
-        "size": "14oz",
+        "description": "Adjustable cycling helmet with ventilation",
+        "price": Decimal("39.99"),
+        "size": "Adult",
         "color": "Red",
         "is_active": True,
-        "image_url": "https://images.unsplash.com/photo-1517438476312-10d79c077509?w=800&q=80"
+        "image_url": "https://images.unsplash.com/photo-1565641379548-67006a29f9f3?w=800&q=80"
     },
     {
-        "name": "Tennis Racket",
-        "title": "Pro Racket",
+        "name": "Camping Tent",
+        "title": "4-Person Tent",
         "category_name": "SPORTS",
-        "description": "Lightweight carbon fiber tennis racket with overgrip",
-        "price": Decimal("89.99"),
-        "size": "27 inch",
+        "description": "Waterproof camping tent with easy setup",
+        "price": Decimal("129.99"),
+        "size": "4 person",
+        "color": "Green",
+        "is_active": True,
+        "image_url": "https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?w=800&q=80"
+    },
+    {
+        "name": "Soccer Ball",
+        "title": "Match Ball",
+        "category_name": "SPORTS",
+        "description": "Official size 5 soccer ball for training and matches",
+        "price": Decimal("24.99"),
+        "size": "Size 5",
+        "color": "White",
+        "is_active": True,
+        "image_url": "https://images.unsplash.com/photo-1614632537197-38a17061c2bd?w=800&q=80"
+    },
+    {
+        "name": "Yoga Block",
+        "title": "Foam Block",
+        "category_name": "SPORTS",
+        "description": "High-density EVA foam yoga block for support",
+        "price": Decimal("12.99"),
+        "size": "9x6x4",
+        "color": "Purple",
+        "is_active": True,
+        "image_url": "https://images.unsplash.com/photo-1588286840104-8957b019727f?w=800&q=80"
+    },
+    {
+        "name": "Protein Shaker",
+        "title": "Blender Bottle",
+        "category_name": "SPORTS",
+        "description": "Leak-proof protein shaker with mixing ball",
+        "price": Decimal("9.99"),
+        "size": "28oz",
+        "color": "Black",
+        "is_active": True,
+        "image_url": "https://images.unsplash.com/photo-1594737626072-90dc274bc2bd?w=800&q=80"
+    },
+    {
+        "name": "Swimming Goggles",
+        "title": "Anti-Fog Goggles",
+        "category_name": "SPORTS",
+        "description": "UV protection swimming goggles with adjustable strap",
+        "price": Decimal("19.99"),
+        "size": "Adult",
         "color": "Blue",
         "is_active": True,
-        "image_url": "https://images.unsplash.com/photo-1622163642998-1ea32b0bbc67?w=800&q=80"
+        "image_url": "https://images.unsplash.com/photo-1519315901367-f34ff9154487?w=800&q=80"
     }
 ]
 
@@ -395,7 +450,7 @@ def smart_resize_image(image_data, max_width=800, max_height=600):
 
 def create_test_data(max_width=800, max_height=600):
     """
-    Run this function in Django shell or management command to populate database
+    Add NEW test data without removing existing data.
     Images will keep their original size if smaller than max dimensions.
     Images will be resized ONLY if they exceed max dimensions.
     
@@ -414,28 +469,29 @@ def create_test_data(max_width=800, max_height=600):
     from SearchFiltering.models import Category, Product
     
     print("="*70)
-    print("STARTING TEST DATA CREATION WITH NEW PRODUCTS")
+    print("ADDING NEW TEST DATA (KEEPING EXISTING DATA)")
     print("="*70)
     print(f"Max dimensions: {max_width}x{max_height}")
     print("Images smaller than max will keep original size")
     print("Images larger than max will be resized proportionally")
     print("="*70)
     
-    # Clear existing data
-    Product.objects.all().delete()
-    Category.objects.all().delete()
-    print("\n✓ Cleared existing data\n")
-    
-    # Create categories
+    # Get or create categories (don't delete existing ones)
     category_objects = {}
-    print("Creating categories...")
+    print("\nChecking categories...")
     for cat_data in categories_data:
-        category = Category.objects.create(**cat_data)
+        category, created = Category.objects.get_or_create(
+            name=cat_data["name"],
+            defaults={"title": cat_data["title"]}
+        )
         category_objects[cat_data["name"]] = category
-        print(f"  ✓ {category.name}")
+        if created:
+            print(f"  ✓ Created: {category.name}")
+        else:
+            print(f"  ✓ Exists: {category.name}")
     
     print(f"\n{'='*70}")
-    print("DOWNLOADING AND PROCESSING IMAGES")
+    print("DOWNLOADING AND PROCESSING NEW PRODUCTS")
     print(f"{'='*70}\n")
     
     # Statistics
@@ -468,7 +524,7 @@ def create_test_data(max_width=800, max_height=600):
             total_size_after += final_size
             
             # Create product
-            filename = f"{prod_data['name'].lower().replace(' ', '_')}.jpg"
+            filename = f"{prod_data['name'].lower().replace(' ', '_')}_{timezone.now().timestamp()}.jpg"
             product = Product.objects.create(
                 category=category_objects[category_name],
                 created_at=timezone.now(),
@@ -499,16 +555,16 @@ def create_test_data(max_width=800, max_height=600):
     print(f"\n{'='*70}")
     print("SUMMARY")
     print(f"{'='*70}")
-    print(f"✓ Categories created: {Category.objects.count()}")
-    print(f"✓ Products created: {Product.objects.count()}")
-    print(f"✓ Products with images: {success_count}")
+    print(f"✓ Total Categories: {Category.objects.count()}")
+    print(f"✓ Total Products in Database: {Product.objects.count()}")
+    print(f"✓ NEW Products Added: {success_count}")
     print(f"  • Images resized: {resized_count}")
     print(f"  • Original size kept: {kept_original_count}")
     if fail_count > 0:
         print(f"✗ Failed downloads: {fail_count}")
     
     if success_count > 0:
-        print(f"\n📊 STORAGE OPTIMIZATION:")
+        print(f"\n📊 STORAGE OPTIMIZATION (NEW PRODUCTS):")
         print(f"   Total before: {total_size_before//1024}KB")
         print(f"   Total after: {total_size_after//1024}KB")
         if total_size_before > total_size_after:
@@ -521,13 +577,13 @@ def create_test_data(max_width=800, max_height=600):
 
 # Management Command
 MANAGEMENT_COMMAND = """
-# Save as: your_app/management/commands/load_test_data.py
+# Save as: your_app/management/commands/add_test_data.py
 
 from django.core.management.base import BaseCommand
 from your_app.test_data import create_test_data
 
 class Command(BaseCommand):
-    help = 'Load NEW test data with smart image resizing'
+    help = 'Add NEW test data without removing existing products'
 
     def add_arguments(self, parser):
         parser.add_argument(
@@ -547,11 +603,11 @@ class Command(BaseCommand):
         max_width = options['max_width']
         max_height = options['max_height']
         
-        self.stdout.write(self.style.WARNING(f'Loading test data (max: {max_width}x{max_height})...'))
+        self.stdout.write(self.style.WARNING(f'Adding new test data (max: {max_width}x{max_height})...'))
         create_test_data(max_width=max_width, max_height=max_height)
         self.stdout.write(self.style.SUCCESS('✓ Complete!'))
 
 # Usage:
-# python manage.py load_test_data
-# python manage.py load_test_data --max-width 1200 --max-height 900
+# python manage.py add_test_data
+# python manage.py add_test_data --max-width 1200 --max-height 900
 """

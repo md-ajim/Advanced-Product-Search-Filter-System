@@ -158,7 +158,7 @@ export default function Home() {
                     <figure className="relative aspect-square w-full overflow-hidden bg-gray-100 dark:bg-gray-700">
                       <Image
                         className="object-cover hover:scale-105 transition-transform duration-300"
-                        src={item.image}
+                        src={item.image ?? "/placeholder.png"}
                         fill
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         alt={item.title || item.name}
