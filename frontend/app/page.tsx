@@ -5,16 +5,18 @@ import Link from "next/link";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Product } from "@/types/product";
+import Image from "next/image";
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import axios from "axios";
-import { useRouter, useParams, useSearchParams } from "next/navigation";
+import {  useSearchParams } from "next/navigation";
 import PaginationDemo from "@/components/pagination/pagination";
 const MIN_PRICE = 0;
 const MAX_PRICE = 1000000;
 export default function Home() {
-  const [product, setProduct] = useState([]);
+  const [product, setProduct] = useState<Product[]>([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
@@ -149,12 +151,12 @@ export default function Home() {
           : product.map((item, index) => (
               <div
                 key={index}
-                className="border border-solid md:h-[450px]  lg:h-[450px] md:p-0 pb-4 lg:p-0   w-full h-auto flex flex-col border-gray-300 rounded-lg shadow-sm hover:shadow-md"
+                className="border border-solid  md:p-0 pb-4 lg:p-0    flex flex-col border-gray-300 rounded-lg shadow-sm hover:shadow-md"
               >
                 <Link href={`/product/`}>
                   <figure className=" relative">
-                    <img
-                      className="w-full rounded-t-lg"
+                    <Image
+                      className="object-cover"
                       src={`${item.image}`}
                       width={300}
                       height={300}
@@ -174,7 +176,7 @@ export default function Home() {
                       <div>
                         <div className="flex items-center space-x-1 mt-1">
                           <div className="flex">
-                            {[...Array(1, 5)].map((_, i) => (
+                            {[...Array(5)].map((_, i) => (
                               <StarIcon
                                 key={i}
                                 className={`w-4 h-4 ${
