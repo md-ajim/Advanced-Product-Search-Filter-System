@@ -156,11 +156,12 @@ export default function Home() {
                 <Link href={`/product/`}>
                   <figure className=" relative">
                     <Image
-                      className="object-cover"
+                      className="object-cover w-auto "
                       src={`${item.image}`}
-                      width={300}
-                      height={300}
-                      alt={"ofrx"}
+                      layout="responsive"
+                      width={0}
+                      height={0}
+                      alt={"image"}
                     />
                     <Badge
                       variant="secondary"
