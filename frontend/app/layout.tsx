@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Navbar05Page from "@/components/navbar-05/navbar-05";
 import Footer04Page from "@/components/footer-04/footer-04";
 import "./globals.css";
+import { Suspense } from 'react'; // Import Suspense
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -29,9 +30,11 @@ export default function RootLayout({
       <body suppressHydrationWarning
         // className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Navbar05Page/>
+      <Suspense>
+          <Navbar05Page/>
         {children}
         <Footer04Page/>
+      </Suspense>
       </body>
     </html>
   );
