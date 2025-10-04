@@ -21,3 +21,8 @@ export interface Product {
 }
 
 
+export interface Review {
+    product : string 
+    rating : number
+    created_at: string
+}

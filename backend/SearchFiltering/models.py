@@ -47,5 +47,5 @@ class Review(models.Model):
     rating = models.PositiveIntegerField()  # Scale 1-5)
     created_at = models.DateTimeField(auto_now_add=True)
     def __str__(self):
-      return self.comment
+      return self.product.title
     
