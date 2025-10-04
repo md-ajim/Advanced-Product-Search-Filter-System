@@ -4,6 +4,7 @@ import { StarIcon, EyeIcon, ShoppingCart, HeartIcon } from "lucide-react";
 import Link from "next/link";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Badge } from "@/components/ui/badge";
+import { useCallback } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Product } from "@/types/product";
@@ -32,7 +33,8 @@ export default function Home() {
     to: MAX_PRICE,
   });
 
-  const searchProductUpdate = async () => {
+  const searchProductUpdate =  useCallback(
+    async () => {
     setLoading(true);
     try {
       const response = axios.get(
@@ -53,9 +55,11 @@ export default function Home() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [search_query]
+  )
 
-  const FilterProductUpdate = async () => {
+  const FilterProductUpdate = useCallback(
+    async () => {
     setLoading(true);
     const params = {
       category: is_category,
@@ -84,7 +88,8 @@ export default function Home() {
       setLoading(false);
       console.log("filter function");
     }
-  };
+  }, [is_category, value, rating, searchParams]
+  )
 
   useEffect(() => {
     const factProductData = async () => {
@@ -116,7 +121,7 @@ export default function Home() {
     } else {
       factProductData();
     }
-  }, [search_query, rating, currentPage]);
+  }, [search_query, rating, currentPage , searchProductUpdate, FilterProductUpdate]);
 
   const HandelCategoryChange = async (category = []) => {
     setIsCategory(category);
