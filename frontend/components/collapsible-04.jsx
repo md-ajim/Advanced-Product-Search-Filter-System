@@ -12,7 +12,7 @@ import { Slider } from "@/components/ui/slider";
 import { ChevronDown, CircleDollarSign, Star, Tag } from "lucide-react";
 import { useState } from "react";
 const MIN_PRICE = 0;
-const MAX_PRICE = 10000;
+const MAX_PRICE = 1000;
 
 const CollapsibleFilters = ({
  HandelCategoryChange,

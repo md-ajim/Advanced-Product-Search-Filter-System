@@ -4,6 +4,7 @@ import { StarIcon, EyeIcon, ShoppingCart, HeartIcon } from "lucide-react";
 import Link from "next/link";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Badge } from "@/components/ui/badge";
+
 import { Button } from "@/components/ui/button";
 import { Product } from "@/types/product";
 import Image from "next/image";
@@ -14,7 +15,7 @@ import { useSearchParams } from "next/navigation";
 import PaginationDemo from "@/components/pagination/pagination";
 
 const MIN_PRICE = 0;
-const MAX_PRICE = 1000000;
+const MAX_PRICE = 1000;
 
 export default function Home() {
   const [product, setProduct] = useState<Product[]>([]);
@@ -189,15 +190,15 @@ export default function Home() {
                           <StarIcon
                             key={i}
                             className={`w-3 h-3 sm:w-4 sm:h-4 ${
-                              i < Math.floor(item.rating || 0)
+                              item.reviews && item.reviews.length > 0 && i < item.reviews[0].rating
                                 ? "text-yellow-500 fill-yellow-500"
                                 : "text-gray-300 dark:text-gray-600"
                             }`}
                           />
                         ))}
                       </div>
-                      <span className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">
-                        ({item.rating || 0})
+                      <span className="text-xs sm:text-sm bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300">
+                        ({ item.reviews && item.reviews.length > 0 && item.reviews[0].rating       })
                       </span>
                     </div>
 

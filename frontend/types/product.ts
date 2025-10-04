@@ -15,7 +15,7 @@ export interface Product {
     color?: string | null;
     image?: string | null;
     is_active: boolean;
-    reviews:[]
+    reviews: Review[] | null 
     created_at: string; // ISO date string
     updated_at: string; // ISO date string
 }
