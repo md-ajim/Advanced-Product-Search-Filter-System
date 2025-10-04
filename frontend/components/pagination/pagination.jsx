@@ -12,6 +12,11 @@ import { buttonVariants } from "@/components/ui/button";
 const PaginationDemo = ({ currentPage, totalPages, onPageChange }) => {
   let maxPageButtons = 4;
 
+  console.log(currentPage,'currentPage')
+  console.log(totalPages, 'total page')
+  console.log(onPageChange, 'PageChange')
+
+
   let pageNumber = [];
 
   if (maxPageButtons < totalPages) {
@@ -81,19 +86,3 @@ const PaginationDemo = ({ currentPage, totalPages, onPageChange }) => {
 };
 
 export default PaginationDemo;
-
-// <PaginationItem>
-//         <PaginationLink
-//           href="#"
-//           isActive
-//           className={cn(
-//             "!shadow-none hover:!text-primary-foreground",
-//             buttonVariants({
-//               variant: "default",
-//               size: "icon",
-//             })
-//           )}
-//         >
-//           2
-//         </PaginationLink>
-//       </PaginationItem>
