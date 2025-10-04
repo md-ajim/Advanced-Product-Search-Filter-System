@@ -21,6 +21,7 @@ class ReviewSerializer(serializers.ModelSerializer):
                
 class ProductSerializer(serializers.ModelSerializer):
     category = CategorySerializer()
+    reviews = ReviewSerializer(many=True)
  
     
     
