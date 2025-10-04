@@ -41,7 +41,7 @@ const Footer04Page = () => {
     <div className=" flex flex-col">
       <div className="grow bg-muted" />
       <footer>
-        <div className="max-w-screen-xl mx-auto">
+        <div className="w-full max-w-screen-2xl mx-auto px-2 sm:px-4 lg:px-6">
           <div className="py-12 flex flex-col sm:flex-row items-start justify-between gap-x-8 gap-y-10 px-6 xl:px-0">
             <div>
               {/* Logo */}
