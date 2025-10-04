@@ -43,17 +43,8 @@ class Product(models.Model):
 
 
 class Review(models.Model):
-    SORTING_CHOICES = [
-        ('newest', 'Newest'),
-        ('oldest', 'Oldest'),
-        ('highest-rating', 'Highest Rating'),
-        ('lowest-rating', 'Lowest Rating'),
-        ('most-helpful', 'Most Helpful'),
-    ]
-    sort_by = models.CharField(max_length=50, choices=SORTING_CHOICES, default='newest')
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='reviews')
     rating = models.PositiveIntegerField()  # Scale 1-5)
-    reported = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     def __str__(self):
       return self.comment
