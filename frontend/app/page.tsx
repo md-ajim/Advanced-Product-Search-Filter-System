@@ -38,7 +38,7 @@ export default function Home() {
       setLoading(true);
       try {
         const response = axios.get(
-          `https://advanced-product-search-filter-system.onrender.com/?search=${search_query}`
+          `https://advanced-product-search-filter-system.onrender.com/api/product/?search=${search_query}`
         );
         const data = (await response).data.results;
 
@@ -96,7 +96,7 @@ export default function Home() {
       setLoading(true);
       try {
         const response = axios.get(
-          `https://advanced-product-search-filter-system.onrender.com/?page=${currentPage}&page_size=${productsPerPage}`
+          `https://advanced-product-search-filter-system.onrender.com/api/product/?page=${currentPage}&page_size=${productsPerPage}`
         );
         setTotalPages(Math.ceil((await response).data.count / productsPerPage));
         const data = (await response).data.results;
