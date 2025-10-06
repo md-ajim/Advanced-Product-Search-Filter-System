@@ -71,7 +71,7 @@ MIDDLEWARE = [
 ]
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
-    'https://advanced-product-search-filter-syst.vercel.app'
+    'https://advanced-product-search-filter-system.vercel.app'
     
 ]
 
