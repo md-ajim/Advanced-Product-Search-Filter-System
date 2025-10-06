@@ -72,6 +72,7 @@ MIDDLEWARE = [
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     'https://advanced-product-search-filter-syst.vercel.app'
+    
 ]
 
 
@@ -156,11 +157,9 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
+MEDIA_URL='/media/'
 
-# Media files (user-uploaded content)
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+STATIC_ROOT = os.path.join(BASE_DIR , 'staticfiles')
+MEDIA_ROOT = os.path.join( BASE_DIR , 'mediafiles')

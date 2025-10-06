@@ -3,7 +3,14 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
   images: {
-    domains: ["https://advanced-product-search-filter-system.onrender.com/media/images/"],
+    remotePatterns:[
+      {
+        protocol: 'https',
+        hostname:'advanced-product-search-filter-system.onrender.com',
+        port: '',
+        pathname: '/media/images/**',
+      },
+    ],
   },
 };
 
